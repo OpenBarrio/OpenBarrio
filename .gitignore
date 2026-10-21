@@ -1,5 +1,7 @@
 # build outputs
 build/
+build86/
+build64/
 out/
 *.pdb
 *.ilk

@@ -1,0 +1,23 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "x86",
+      "displayName": "x86 (Win32)",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "Win32",
+      "binaryDir": "${sourceDir}/build86"
+    },
+    {
+      "name": "x64",
+      "displayName": "x64",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build64"
+    }
+  ],
+  "buildPresets": [
+    { "name": "x86-release", "configurePreset": "x86", "configuration": "Release" },
+    { "name": "x64-release", "configurePreset": "x64", "configuration": "Release" }
+  ]
+}
