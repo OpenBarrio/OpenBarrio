@@ -12,3 +12,4 @@ out/
 *.nhd
 TS3W.exe
 TS3.exe
+dist/

@@ -11,6 +11,8 @@ add_compile_options(/permissive- /utf-8 /Zc:__cplusplus /wd4324)
 file(TO_NATIVE_PATH "${CMAKE_SOURCE_DIR}" OPENBARRIO_SOURCE_DIR_NATIVE)
 add_compile_options(/Brepro "/d1trimfile:${OPENBARRIO_SOURCE_DIR_NATIVE}")
 string(APPEND CMAKE_STATIC_LINKER_FLAGS " /Brepro")
+string(APPEND CMAKE_EXE_LINKER_FLAGS " /Brepro")
+string(APPEND CMAKE_SHARED_LINKER_FLAGS " /Brepro")
 
 # EA's open-source EASTL and EABase, vendored unmodified (see THIRD_PARTY.md). Don't upgrade: the game's container
 # layouts depend on this exact version.
@@ -29,3 +31,31 @@ add_library(openbarrio_core STATIC ${OPENBARRIO_CORE_SOURCES})
 target_include_directories(openbarrio_core PUBLIC src/core/include)
 target_compile_options(openbarrio_core PRIVATE /W4)
 target_link_libraries(openbarrio_core PUBLIC eastl)
+
+# The save mover (release 1): 32-bit only, like the game.
+if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    # The program and its DLL go into one folder, as they ship.
+    set(OPENBARRIO_BIN ${CMAKE_BINARY_DIR}/bin)
+
+    add_library(openbarrio_mover STATIC mover/mover.cpp)
+    target_include_directories(openbarrio_mover PUBLIC mover)
+    target_compile_options(openbarrio_mover PRIVATE /W4)
+
+    # Only the SpecialDirectory rewrite goes into the DLL, nothing else from the core.
+    add_library(openbarrio_redirect SHARED hook/redirect_dll.cpp src/core/io/special_dir.cpp hook/version.rc)
+    target_include_directories(openbarrio_redirect PRIVATE src/core/include)
+    target_compile_options(openbarrio_redirect PRIVATE /W4)
+    set_target_properties(openbarrio_redirect PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${OPENBARRIO_BIN})
+
+    add_executable(OpenBarrio WIN32 launcher/main.cpp launcher/game.cpp launcher/version.rc
+                   launcher/openbarrio.manifest)
+    target_link_libraries(OpenBarrio PRIVATE openbarrio_mover)
+    target_compile_options(OpenBarrio PRIVATE /W4)
+    set_target_properties(OpenBarrio PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${OPENBARRIO_BIN})
+
+    enable_testing()
+    add_executable(mover_tests tests/mover/mover_tests.cpp)
+    target_link_libraries(mover_tests PRIVATE openbarrio_mover)
+    target_compile_options(mover_tests PRIVATE /W4)
+    add_test(NAME mover_tests COMMAND mover_tests)
+endif()
