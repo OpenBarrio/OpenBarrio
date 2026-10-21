@@ -5,13 +5,14 @@ the original executable. Each one was checked against the original with a differ
 inputs through the original and the rewrite, results compared), on x86 and x64 builds. The tests run
 privately against a legally owned copy of the game and aren't part of this repository yet.
 
-**319 functions** in this release:
+**320 functions** in this release:
 
 | Module | Functions |
 |---|---|
 | Package reader (DBPF reader, RefPack, FNV hashes, packed records) | 41 |
 | m01 Streams and file I/O | 69 |
 | m02 Core runtime (threads, TLS, job manager, stopwatch, allocator helpers) | 136 |
+| Folder redirect (used by the save mover) | 1 |
 | Other verified functions (not on a module list yet) | 72 |
 | m06_audio (one function used by the code above) | 1 |
 
@@ -279,6 +280,12 @@ once those files are complete. Four files with functions that are still being ve
 | `0x00774CB0` | `ts3::runtime::m02::RegisterStopWatch` | `src/core/runtime/m02_00774cb0.cpp` |
 | `0x00774D00` | `ts3::runtime::m02::s1::Destroy` | `src/core/runtime/m02_S1.cpp` |
 | `0x00774D40` | `ts3::runtime::m02::c1::RegistrationTable` | `src/core/runtime/m02_C1.cpp` |
+
+## Folder redirect (used by the save mover)
+
+| Original address | Rewrite | File |
+|---|---|---|
+| `0x004DC100` | `ts3::io::SpecialDirectory` | `src/core/io/special_dir.cpp` |
 
 ## Other verified functions (not on a module list yet)
 
