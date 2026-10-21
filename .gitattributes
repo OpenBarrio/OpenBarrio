@@ -1,0 +1,4 @@
+# Stable line endings, independent of core.autocrlf (source hashes, reproducible builds).
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf

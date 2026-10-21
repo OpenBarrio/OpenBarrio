@@ -1,0 +1,12 @@
+# build outputs
+build/
+out/
+*.pdb
+*.ilk
+*.obj
+
+# never commit game files
+*.package
+*.nhd
+TS3W.exe
+TS3.exe
