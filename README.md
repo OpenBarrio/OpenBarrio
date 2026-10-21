@@ -6,11 +6,23 @@ This is a reverse-engineering attempt to fix many bugs that plague The Sims 3 fo
 
 The project focus on keeping as much as possible from the original and generate patches for common bugs such as errors 16 and 12.
 
-**Disclaimer:** this project contains LLM assisted coding. A loop with Claude coordinating workers on Sol and Qwen3.8-Flash has been used to reverse-engineer the code. The code has been tested with an automated gameplay loop (as well as with my wife playing the game) :)
+### Disclaimer
 
-**Status: super early!** This repository contains only a few of the functions already reworked. I will be adding them as soon as they are concluded.
+This project contains LLM assisted coding. A loop with Claude coordinating workers on Sol and Qwen3.8-Flash has been used to reverse-engineer the code. The code has been tested with an automated gameplay loop (as well as with my wife playing the game) :)
 
-**Who am I:** I am a chip designer at a semiconductor company in Europe. My objective with this project is to ride the reverse engineering waves and finally fix a game that my wife and I love. While software coding is not my trade, this is also an attempt to improve my skills in managing LLMs which are being steadily more used in my industry. But don't worry! I will only commit code that has been fully verified by my testing loop as well as gameplay between me and her. 
+### Status
+
+**Super early!** This repository contains only a few of the functions already reworked. I will be adding them as soon as they are concluded.
+
+### Who am I and why OpenBarrio exists
+
+I am a chip designer at a semiconductor company in Europe. My objective with this project is to ride the reverse engineering waves and finally fix a game that my wife and I love. 
+
+While software coding is not my trade, this is also an attempt to improve my skills in managing LLMs which are being steadily more used in my industry. 
+
+But don't worry! I will only commit code that has been fully verified by my testing loop as well as gameplay between me and her. 
+
+## LLM Stuff
 
 Below is some machine written README stuff thanks to Claude. It is some context about the first release which fixes Error 16.
 
