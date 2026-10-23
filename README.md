@@ -28,7 +28,7 @@ See [the Test Lab guide](testlab/README.md) for use, automated checks, and the g
 
 <img width="742" height="609" alt="image" src="https://github.com/user-attachments/assets/8ce50a31-5473-49b6-8b1c-cdcaff9d971f" />
 
-### Save mover (fix for Error 16)
+#### Old Save mover (fix for Error 16)
 
 The save mover was the first release from OpenBarrio. It essentially is a tool that changes the engine code to move your `Electronic Arts` folder to a different place.
 
@@ -59,7 +59,7 @@ yourself: the build is reproducible.
 
 ## The current status of the project
 
-
+<img width="1177" height="1030" alt="image" src="https://github.com/user-attachments/assets/80cc3d0f-1605-4f38-9e84-ac14854b5f3d" />
 
 The code runs inside the game's process: it uses the original's memory layouts, and some functions still call original code that isn't rewritten yet, so it still depend on the original The Sims 3 code.
 
