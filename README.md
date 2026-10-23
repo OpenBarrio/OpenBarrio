@@ -6,41 +6,45 @@ This is a reverse-engineering attempt to fix many bugs that plague The Sims 3 fo
 
 The project focus on keeping as much as possible from the original and generate patches for common bugs such as errors 16 and 12.
 
-**Disclaimer:** this project contains LLM assisted coding. A loop with Claude coordinating workers on Sol and Qwen3.8-Flash has been used to reverse-engineer the code. The code has been tested with an automated gameplay loop (as well as with my wife playing the game) :)
+### Disclaimer
 
-**Status: super early!** This repository contains only a few of the functions already reworked. I will be adding them as soon as they are concluded.
+This project contains LLM assisted coding. A loop with Claude coordinating workers on Sol and Qwen3.8-Flash has been used to reverse-engineer the code. The code has been tested with an automated gameplay loop (as well as with my wife playing the game) :)
 
-**Who am I:** I am a chip designer at a semiconductor company in Europe. My objective with this project is to ride the reverse engineering waves and finally fix a game that my wife and I love. While software coding is not my trade, this is also an attempt to improve my skills in managing LLMs which are being steadily more used in my industry. But don't worry! I will only commit code that has been fully verified by my testing loop as well as gameplay between me and her. 
+### Status
 
-Below is some machine written README stuff thanks to Claude. It is some context about the first release which fixes Error 16.
+**Super early!** This repository contains only a few of the functions already reworked. I will be adding them as soon as they are concluded.
 
-You should read about the save mover and the rest is just some LLM stuff about build, progress and legal.
+### Who am I and why OpenBarrio exists
 
-## Save mover: the fix for error 16 (release 0.1.0)
+I am a chip designer at a semiconductor company in Europe. My objective with this project is to ride the reverse engineering waves and finally fix a game that my wife and I love. 
 
-When Windows keeps Documents in OneDrive, The Sims 3 keeps its saves there too, and OneDrive's syncing and the
-read-only flags it leaves on files make saving fail ("error 16"). The game has no setting to move its folder.
+While software coding is not my trade, this is also an attempt to improve my skills in managing LLMs which are being steadily more used in my industry. 
 
-`OpenBarrio.exe` is one small window that:
+But don't worry! I will only commit code that has been fully verified by my testing loop as well as gameplay between me and her. 
 
-1. finds the game and checks that it is an original copy (the Steam version 1.67.2 for now);
-2. lets you choose a new folder for your saves, mods and settings, for example outside OneDrive (the folder
-   itself, its `Electronic Arts` folder or its `The Sims 3` folder: it works out which one you mean);
-3. either copies your data there, or uses the folder as it is (data you copied there yourself, or a fresh start in
-   an empty folder). A copy is checked, saves are compared byte for byte, your old folder isn't changed and stays
-   as a backup, and existing data is never mixed with another set;
-4. removes the read-only flags (also on its own, with "Remove read-only flags", if you only want that);
-5. starts the game with "Launch The Sims 3".
+## Features
 
-**What it does, exactly.** "Launch The Sims 3" starts the game's own `TS3W.exe` and loads
-`openbarrio_redirect.dll` into it before the game starts. The DLL replaces one function of the game in memory, the
-lookup of the user-data folder, with our rewrite (TS3W.exe `0x004DC100`, in
-[src/core/io/special_dir.cpp](src/core/io/special_dir.cpp)), and only after checking that the function is exactly
-the one of the supported version. Otherwise it changes nothing and the game isn't started. The source is in
-[hook/](hook/), [launcher/](launcher/) and [mover/](mover/).
+### Save mover: the fix for error 16 (release 0.1.0)
 
-**What it never does:** change anything in the game folder, write outside the folder you chose and its own folder,
-use the internet, ask for admin rights, install anything or run in the background.
+The save mover is the first release from OpenBarrio. It essentially is a tool that changes the engine code to move your `Electronic Arts` folder to a different place.
+
+By default EA has hardcoded the `Electronic Arts` folder to live inside `Documents`, which can generate conflicts with OneDrive.
+This conflict appears in-game as **Error 16** when saving. The simple fix at the moment is to move the folder to outside of OneDrive.
+
+What the release of `OpenBarrio.exe` does:
+
+1. Finds the game and checks that it is an original copy (the Steam version 1.67.2 for now).
+2. Lets you choose a new folder for your saves, mods and settings.
+3. Gives you the option to copy your data there, or uses the folder as it is (you can copy it yourself if you want).
+4. Removes the read-only flags (with the "Remove read-only flags" button).
+5. Starts the game with "Launch The Sims 3" and inserts the new code to the game.
+
+#### Technical Explanation
+
+It launches The Sims 3" own `TS3W.exe` and loads `openbarrio_redirect.dll` into it before the game starts. 
+The DLL replaces a function of the game responsible to looking-up the user-data folder with the rewritten code (TS3W.exe `0x004DC100`, in
+[src/core/io/special_dir.cpp](src/core/io/special_dir.cpp)). Unfortunately it can only work with the latest Steam version for now.
+The source is in [hook/](hook/), [launcher/](launcher/) and [mover/](mover/).
 
 **Known limits:** start the game through OpenBarrio (EA's Sims3Launcher still uses the old folder); a few
 script-side folder lookups aren't redirected yet; only Steam 1.67.2 is supported; it doesn't fix error 12.
@@ -49,10 +53,10 @@ script-side folder lookups aren't redirected yet; only Steam 1.67.2 is supported
 sometimes flagged by antivirus software. Check the download against the SHA-256 on the release page, or build it
 yourself: the build is reproducible.
 
-## What's included
+## The current status of the project
 
-320 rewritten functions in a static library (`openbarrio_core`). The full list, with each function's address in
-the original game, is in [docs/coverage.md](docs/coverage.md).
+Many functions have been rewritten but currently only 320 rewritten functions are available as a static library (`openbarrio_core`). 
+The full list, with each function's address in the original game, is in [docs/coverage.md](docs/coverage.md) (the document has been written by an LLM).
 
 | Part | Functions |
 |---|---|
@@ -63,7 +67,7 @@ the original game, is in [docs/coverage.md](docs/coverage.md).
 | Other verified functions these depend on | 73 |
 
 The code runs inside the game's process: it uses the original's memory layouts, and some functions still call
-original code that isn't rewritten yet, so we still depend on the original The Sims 3 code.
+original code that isn't rewritten yet, so it still depend on the original The Sims 3 code.
 
 ## Building
 
@@ -83,7 +87,7 @@ The libraries end up in `build86/Release/` and `build64/Release/`. The x86 build
 python tools/package.py
 ```
 
-Builds are reproducible: building the same commit twice gives byte-identical files and the same zip.
+Information in case you are looking to reproduce the build:
 
 | Release | File | SHA-256 |
 |---|---|---|
