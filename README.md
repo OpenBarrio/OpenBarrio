@@ -1,10 +1,8 @@
 # OpenBarrio
 
-OpenBarrio brings tools and engines rewrites targeting The Sims 3. These are sets of functions written from scratch against the original game.
+OpenBarrio brings tools and engines rewrites targeting The Sims 3. These are sets of functions written from scratch against the original game as a reverse-engineering attempt to fix many bugs that plague The Sims 3 for almost 20 years. 
 
-This is a reverse-engineering attempt to fix many bugs that plague The Sims 3 for almost the last 20 years. 
-
-The project focus on keeping as much as possible from the original and generate patches for common bugs such as errors 16 and 12.
+OpenBarrio acts as a DLL injector, swapping the original engine code for the rewritten version. Currently it attempts to do a 1:1 translation with patches being the future goal.
 
 ### Disclaimer
 
@@ -16,17 +14,23 @@ This project contains LLM assisted coding. A loop with Claude coordinating worke
 
 ### Who am I and why OpenBarrio exists
 
-I am a chip designer at a semiconductor company in Europe. My objective with this project is to ride the reverse engineering waves and finally fix a game that my wife and I love. 
+I am a chip designer at a semiconductor company in Europe. My day job is in ASIC design and verification using HDL, TCL and occasional python scripts. 
 
-While software coding is not my trade, this is also an attempt to improve my skills in managing LLMs which are being steadily more used in my industry. 
-
-But don't worry! I will only commit code that has been fully verified by my testing loop as well as gameplay between me and her. 
+The objective of this project is to create a repository of code that initially can replace the original engine and eventually create fixes for a game that my wife and I love. 
 
 ## Features
 
-### Save mover: the fix for error 16 (release 0.1.0)
+### Test Lab and Save mover: 
 
-The save mover is the first release from OpenBarrio. It essentially is a tool that changes the engine code to move your `Electronic Arts` folder to a different place.
+As of October 23rd users can now toggle rewritten functions and debug failing functions with the OpenBarrio Test Lab. The Test Lab is a tool that integrates the save game mover and debugging tools to log where miss-matches happen in the code. 
+
+See [the Test Lab guide](testlab/README.md) for use, automated checks, and the game tests still required.
+
+<img width="742" height="609" alt="image" src="https://github.com/user-attachments/assets/8ce50a31-5473-49b6-8b1c-cdcaff9d971f" />
+
+### Save mover (fix for Error 16)
+
+The save mover was the first release from OpenBarrio. It essentially is a tool that changes the engine code to move your `Electronic Arts` folder to a different place.
 
 By default EA has hardcoded the `Electronic Arts` folder to live inside `Documents`, which can generate conflicts with OneDrive.
 This conflict appears in-game as **Error 16** when saving. The simple fix at the moment is to move the folder to outside of OneDrive.
@@ -55,23 +59,9 @@ yourself: the build is reproducible.
 
 ## The current status of the project
 
-Many functions have been rewritten but currently only 320 rewritten functions are available as a static library (`openbarrio_core`). 
-The full list, with each function's address in the original game, is in [docs/coverage.md](docs/coverage.md) (the document has been written by an LLM).
 
-| Part | Functions |
-|---|---|
-| Package reader: DBPF package reader, RefPack decompression, FNV hashes, packed records | 41 |
-| Streams and file I/O | 69 |
-| Core runtime: threads, thread-local storage, job manager, stopwatch, allocator helpers | 136 |
-| Folder redirect: the user-data folder lookup the save mover replaces | 1 |
-| Other verified functions these depend on | 73 |
 
-The code runs inside the game's process: it uses the original's memory layouts, and some functions still call
-original code that isn't rewritten yet, so it still depend on the original The Sims 3 code.
-
-## Engine Test Lab
-
-`build86/Release/OpenBarrioTestLab.exe` provides module/hook selection, Compare or Replace mode, verified save copies, crash reports, persistent culprit searches, and session logs. It also has a CMake preset selector and Build button. See [the Test Lab guide](testlab/README.md) for use, automated checks, and the game tests still required.
+The code runs inside the game's process: it uses the original's memory layouts, and some functions still call original code that isn't rewritten yet, so it still depend on the original The Sims 3 code.
 
 ## Building
 
@@ -84,18 +74,7 @@ cmake --preset x64
 cmake --build --preset x64-release
 ```
 
-The libraries end up in `build86/Release/` and `build64/Release/`. The x86 build also makes the save mover
-(`build86/bin/Release/`) and its tests (`ctest --test-dir build86 -C Release`). To make the release zip:
-
-```
-python tools/package.py
-```
-
-Information in case you are looking to reproduce the build:
-
-| Release | File | SHA-256 |
-|---|---|---|
-| 0.1.0 | `OpenBarrio-0.1.0.zip` | `471dbd84e31bfc23c8b5724759d02f73962423878105814f1de47fd2e83d0813` |
+The libraries end up in `build86/Release/` and `build64/Release/`. The x86 build also makes the save mover (`build86/bin/Release/`) and its tests (`ctest --test-dir build86 -C Release`). 
 
 ## Legal (attempt)
 
