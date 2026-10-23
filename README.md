@@ -69,6 +69,10 @@ The full list, with each function's address in the original game, is in [docs/co
 The code runs inside the game's process: it uses the original's memory layouts, and some functions still call
 original code that isn't rewritten yet, so it still depend on the original The Sims 3 code.
 
+## Engine Test Lab
+
+`build86/Release/OpenBarrioTestLab.exe` provides module/hook selection, Compare or Replace mode, verified save copies, crash reports, persistent culprit searches, and session logs. It also has a CMake preset selector and Build button. See [the Test Lab guide](testlab/README.md) for use, automated checks, and the game tests still required.
+
 ## Building
 
 Requirements: Windows, Visual Studio 2026 (MSVC toolset 14.5x) and CMake 3.28 or newer.

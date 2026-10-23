@@ -13,3 +13,10 @@ out/
 TS3W.exe
 TS3.exe
 dist/
+
+# Local Test Lab sessions and symbols (never publish)
+sessions/
+*.dmp
+*.map
+testlab.ini
+build.log
