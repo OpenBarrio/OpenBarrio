@@ -29,8 +29,21 @@ target_compile_options(eastl PRIVATE /W0)
 file(GLOB_RECURSE OPENBARRIO_CORE_SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/core/*.cpp)
 add_library(openbarrio_core STATIC ${OPENBARRIO_CORE_SOURCES})
 target_include_directories(openbarrio_core PUBLIC src/core/include)
-target_compile_options(openbarrio_core PRIVATE /W4)
+# /Gy /Gw: function-level linking, so a program takes only the functions it uses (see the test harness below).
+target_compile_options(openbarrio_core PRIVATE /W4 /Gy /Gw)
 target_link_libraries(openbarrio_core PUBLIC eastl)
+
+# The engine test harness: the rewritten functions inside the running game (32-bit only, like the game).
+# openbarrio_launch.exe starts the game with openbarrio_test.dll; see harness/README.txt and docs/engine/.
+if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    add_library(openbarrio_test SHARED harness/harness_public.cpp)
+    target_link_libraries(openbarrio_test PRIVATE openbarrio_core bcrypt)
+    target_link_options(openbarrio_test PRIVATE /OPT:REF /OPT:ICF)
+    add_executable(openbarrio_launch harness/launcher.cpp)
+    add_custom_command(TARGET openbarrio_test POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/harness/harness_public.ini
+                $<TARGET_FILE_DIR:openbarrio_test>/harness_public.ini)
+endif()
 
 # The save mover (release 1): 32-bit only, like the game.
 if(CMAKE_SIZEOF_VOID_P EQUAL 4)

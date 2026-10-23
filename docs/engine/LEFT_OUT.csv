@@ -1,0 +1,60 @@
+path,reason
+src/core/anim/m05_M108.cpp,has unverified or partial functions: 0x0083A280
+src/core/anim/m05_M110.cpp,has unverified or partial functions: 0x0083BFE0
+src/core/anim/m05_M111.cpp,has unverified or partial functions: 0x0083D390
+src/core/anim/m05_M116.cpp,has unverified or partial functions: 0x0083FCB0 0x0083FD50 0x0083FDF0 0x00840080
+src/core/anim/m05_M127.cpp,has unverified or partial functions: 0x00847830
+src/core/anim/m05_M19.cpp,has unverified or partial functions: 0x0055E4E0
+src/core/anim/m05_M26.cpp,has unverified or partial functions: 0x005670A0 0x00567480 0x005675D0 0x005675E0 0x005676B0 0x005679A0
+src/core/anim/m05_M75.cpp,has unverified or partial functions: 0x00576010 0x00576030 0x005769D0 0x00576B30 0x00576B70 0x00576BC0
+src/core/anim/m05_M93.cpp,has unverified or partial functions: 0x005802D0 0x00580440 0x00580450 0x00580460 0x00580470 0x00580480
+src/core/anim/m05_M95.cpp,has unverified or partial functions: 0x005814D0 0x00581510 0x005815F0 0x005818E0 0x00581D80 0x00581F00
+src/core/anim/m05_M99.cpp,has unverified or partial functions: 0x00583BF0 0x00583C10 0x00583C20 0x00583C40 0x00583C60 0x00583BA4
+src/core/audio/cls_4e82e0_Audio.cpp,has unverified or partial functions: 0x004E82E0 0x004E8370 0x004E84A0 0x0089F5E0
+src/core/audio/clu_4e14c0_Audio.cpp,has unverified or partial functions: 0x007D2E20 0x00872FE0 0x00873030 0x00C6CC20
+src/core/audio/m06_B03.cpp,has unverified or partial functions: 0x008618F0 0x00861940 0x00861A90 0x00861C60 0x00861C70 0x00861CE0 0x00861DA0 0x00861E20 0x00861E30 0x00861E40 0x00861E50 0x00861F20 0x00861F90
+src/core/cas/clu_68baf0_CAS.cpp,has unverified or partial functions: 0x0068BAF0 0x0068ED00
+src/core/cas/clu_798ef0_CAS.cpp,has unverified or partial functions: 0x00798EF0 0x00799C40
+src/core/debug/clu_e68140_Debug.cpp,has unverified or partial functions: 0x00E68140 0x00E6F910 0x00E80800 0x00E856B0 0x00E85810
+src/core/eatextutil/clu_4a0dc0_EATextUtil.cpp,has unverified or partial functions: 0x004A0DC0 0x004EC3C0 0x00500010 0x005000F0
+src/core/gameutils/clu_6879b0_GameUtils.cpp,has unverified or partial functions: 0x006879B0 0x00688C50 0x006AAFC0
+src/core/lighting/cls_71a120_Lighting.cpp,has unverified or partial functions: 0x0071A120 0x007D2030
+src/core/math/m04_B06.cpp,a hook is off in game: m04.B06.Reflect
+src/core/math/m04_B13.cpp,a hook is off in game: m04_B13.Curve55DD40 m04_B13.Curve7CC350 m04_B13.Curve8C4130 m04_B13.Curve8C41C0 m04_B13.Curve8D9890 m04_B13.Curve8D9920 m04_B13.Curve9033C0 m04_B13.Curve9034C0 m04_B13.Curve911640 m04_B13.Curve968FA0 m04_B13.Curve969040 m04_B13.Curve972620 m04_B13.CurveB73F60
+src/core/math/m04_B14.cpp,a hook is off in game: generic.m04_B14.RaySphere generic.m04_B14.SegmentBox2 generic.m04_B14.RayCapsule generic.m04_B14.RayBoxNormal generic.m04_B14.RayBoxInterval generic.m04_B14.ContainsPoint generic.m04_B14.ClassifyBounds generic.m04_B14.CornerBounds generic.m04_B14.TestPacked generic.m04_B14.ClippedBounds generic.m04_
+src/core/math/m04_B15.cpp,a hook is off in game: m04_B15.RectCircle
+src/core/math/m04_B18.cpp,a hook is off in game: m04_B18.TurnWithin m04_B18.CollinearClone
+src/core/math/m04_B19.cpp,a hook is off in game: m04_B19.KernelB01900 m04_B19.KernelB58930 m04_B19.KernelB779A0 m04_B19.KernelB77D40 m04_B19.KernelB77DB0 m04_B19.KernelB784D0 m04_B19.KernelBF4F40 m04_B19.KernelD0F490 m04_B19.KernelD0F560
+src/core/misc/cls_408760_x.cpp,has unverified or partial functions: 0x004089B0 0x00408A8E
+src/core/misc/cls_4a7360_x.cpp,has unverified or partial functions: 0x005AE170 0x005AE420 0x005AE610 0x00996300 0x00996460 0x00996620 0x00996630 0x00996680
+src/core/misc/cls_ec6ff0_Misc.cpp,has unverified or partial functions: 0x00EC6FF0 0x00EC70A0
+src/core/misc/clu_4fb460_x.cpp,has unverified or partial functions: 0x004FE6B0 0x004FE720
+src/core/misc/clu_ec5110_Misc.cpp,has unverified or partial functions: 0x00EC5110 0x00EC52D0
+src/core/pathplan/clu_6edad0_PathPlan.cpp,has unverified or partial functions: 0x006EDAD0 0x006EEBD0 0x006EEDA0
+src/core/render/m07_B03.cpp,has unverified or partial functions: 0x00612EB0
+src/core/render/m07_B32.cpp,has unverified or partial functions: 0x006B40B0 0x006B4240 0x006B42A0 0x006B44E0 0x006B49F0 0x006B6C20 0x006B6EC0 0x006B6FE0 0x006B70E0 0x006B9630 0x006BB8F0 0x006BBD10 0x006BBFC0 0x006C3550
+src/core/render/m07_B34.cpp,has unverified or partial functions: 0x007188E0 0x00718910 0x0071A5C0 0x0071ABF0 0x0071AC00 0x0071AB80 0x006A4700 0x006ACA00 0x006AFDC0 0x006C7160 0x0071A160 0x0071B060 0x0071B3A0
+src/core/renderer/cls_5e25e0_Renderer.cpp,has unverified or partial functions: 0x005E25E0 0x005E44C0
+src/core/renderer/cls_b94660_Renderer.cpp,has unverified or partial functions: 0x00B94660
+src/core/renderer/clu_7d7680_Renderer.cpp,has unverified or partial functions: 0x007D7680 0x00F8C290
+src/core/resource/m03_B01.cpp,has unverified or partial functions: 0x004B1DD0 0x004B1E80 0x004B1F50 0x004B20E0 0x004B2260 0x004B2320 0x004B2400 0x004B24B0 0x004B25B0 0x004B2620 0x004B3040 0x004B35C0
+src/core/resource/m03_G05.cpp,has unverified or partial functions: 0x0059B390
+src/core/resource/m03_G17.cpp,a hook is off in game: m03.resources.G17.Resolve
+src/core/resource/m03_M01.cpp,a hook is off in game: m03.resources.M01.Load
+src/core/resource/m03_M03.cpp,a hook is off in game: m03.resources.M03.LoadIndexes m03.resources.M03.ChangeDatabase m03.resources.M03.Shutdown m03.resources.M03.Mount
+src/core/resource/m03_M06.cpp,has unverified or partial functions: 0x0059B390 0x00727140 0x00728990 0x0072A150 0x0072E520
+src/core/resourceload/clu_4a6860_ResourceLoad.cpp,has unverified or partial functions: 0x004AE510 0x004AE6E0 0x004A9150 0x004A9450 0x0072BB60 0x0072C130
+src/core/resourcesystem/clu_727290_ResourceSystem.cpp,a hook is off in game: resys.SwapSlotA resys.ReleaseTagged resys.SwapSlotB resys.Lookup resys.GetDirMgr resys.ReleaseRef resys.EraseNode resys.ReleaseRefs resys.TrimCache
+src/core/scratch/cls_4ea380_Scratch.cpp,has unverified or partial functions: 0x004FE3B0 0x009D1700 0x007D9FB0 0x004EA380 0x004EA5A0 0x007DB860 0x007DBAD0 0x007DF970 0x009D2610 0x009D2890 0x009D32B0 0x009D6000 0x009D6800 0x009D68F0 0x009D69F0 0x00C8BDF0 0x00C8BE00 0x00C8BE20 0x00C8BFA0 0x00C8DF90 0x00C9B7F0 0x00C9B8C0
+src/core/scratch/cls_650160_Scratch.cpp,has unverified or partial functions: 0x00650160 0x00657A80 0x00657C50 0x00657E80 0x00673C70
+src/core/scratch/clu_408e20_Scratch.cpp,has unverified or partial functions: 0x005AFBB0 0x00793D30 0x00956210 0x00D28E40 0x00D29060 0x00D291B0
+src/core/scripting/cls_86c000_Scripting.cpp,has unverified or partial functions: 0x0086C000 0x0086C710
+src/core/speedtree/clu_6cfd50_SpeedTree.cpp,has unverified or partial functions: 0x006CFD50 0x006CFDD0 0x006CFE40 0x006CFEC0
+src/core/stopwatch/clu_4f3370_StopWatch.cpp,has unverified or partial functions: 0x00C16380 0x00C16450
+src/core/swarm/clu_405a50_Swarm.cpp,has unverified or partial functions: 0x008E2060 0x0090FEE0 0x00920F10
+src/core/ui/clu_498980_UI.cpp,has unverified or partial functions: 0x00498980 0x0049C3E0 0x005984E0 0x00598660
+src/core/ui/clu_50b5f0_UI.cpp,has unverified or partial functions: 0x00511B10 0x00513560
+src/core/ui/m08_B28.cpp,has unverified or partial functions: 0x0051F0F0 0x0051F130 0x0051F2B0 0x0051F2F0 0x0051F320 0x0051F340 0x0051F370 0x0051F4F0 0x0051F540 0x0051F550 0x0051F570 0x0051F580 0x0051F5C0 0x0051F610 0x0051F640
+src/core/usertool/clu_64fda0_UserTool.cpp,has unverified or partial functions: 0x0064FDA0 0x00654240
+src/core/videorenderablecontext/cls_618eb0_VideoRenderableC.cpp,has unverified or partial functions: 0x00618EB0 0x009D9B40 0x009D9BC0 0x009D9C40 0x009D9C70 0x009D9C80 0x00F16F80 0x00F1FE50
+src/core/world/cls_c0b550_World.cpp,has unverified or partial functions: 0x00C1A6B0

@@ -1,0 +1,197 @@
+#include "ts3/anim/m05_M120.h"
+namespace ts3::anim::M120 {
+namespace {
+#if defined(_M_IX86)
+// Float entries name the original constant pool, not rounded decimal approximations.
+// 0/1 encode FLDZ/FLD1. Slots and argument order are from 008428C0..0084436C.
+struct DebugControl { unsigned slot; uintptr_t args[5]; };
+constexpr DebugControl controls[] = {
+    {6, {0x10210a4, 0x7d0}},
+    {10, {0x100, 0x1023c24}},
+    {10, {0x102, 0x1023bdc}},
+    {6, {0, 0x7fffffff}},
+    {6, {0xfc2be4, 0x802}},
+    {12, {0x1166268, 0x10267b4, 0, 0x106e33c, 0xf988e8}},
+    {6, {0, 0x7fffffff}},
+    {6, {0x10267a0, 0x80c}},
+    {12, {0x11665ec, 0x1026784, 0x106e33c, 0x106d738, 0x106d6cc}},
+    {12, {0x11665f0, 0x1026758, 0xf9a5ac, 0x106809c, 0xf9a5ac}},
+    {12, {0x11665f4, 0x1026718, 0, 1, 0x1010960}},
+    {12, {0x11665f8, 0x10266c8, 0, 0xfbd498, 0x1010960}},
+    {12, {0x1166364, 0x10266a4, 0, 0xfbd498, 0x106d6cc}},
+    {12, {0x1166368, 0x1026670, 1, 0xf98a58, 0x106d6cc}},
+    {6, {0, 0x7fffffff}},
+    {6, {0x102664c, 0x816}},
+    {12, {0x114f424, 0x10265f8, 0, 0x1026648, 1}},
+    {12, {0x114f428, 0x10265a0, 0, 0x1026648, 1}},
+    {12, {0x114f404, 0x1026550, 0xfaa210, 0, 0x106d6cc}},
+    {12, {0x114f408, 0x1026500, 0xfaa210, 0, 0x106d6cc}},
+    {12, {0x114f40c, 0x10264b0, 0xfaa210, 0, 0x106d6cc}},
+    {12, {0x114f410, 0x1026460, 0xfaa210, 0, 0x106d6cc}},
+    {12, {0x114f414, 0x1026410, 0, 1, 0x106d6cc}},
+    {12, {0x114f418, 0x10263c0, 0, 1, 0x106d6cc}},
+    {12, {0x114f41c, 0x1026370, 0, 1, 0x106d6cc}},
+    {12, {0x114f420, 0x1026320, 0, 1, 0x106d6cc}},
+    {12, {0x114f42c, 0x10262c0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd498, 0x1026268, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f430, 0x1026210, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f434, 0x10261b8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f438, 0x1026160, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f43c, 0x1026108, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd49c, 0x10260b0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f440, 0x1026058, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f444, 0x1026000, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f448, 0x1025fa8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f44c, 0x1025f50, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f450, 0x1025ef8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f454, 0x1025ea0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f458, 0x1025e48, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f45c, 0x1025df0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f460, 0x1025d98, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f464, 0x1025d40, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f468, 0x1025ce8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f46c, 0x1025c90, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f470, 0x1025c38, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f474, 0x1025bd8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f478, 0x1025b78, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f47c, 0x1025b10, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f480, 0x1025aa8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f484, 0x1025a48, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f488, 0x10259e8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f48c, 0x1025980, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f490, 0x1025918, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd4a0, 0x10258b0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f494, 0x1025848, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f498, 0x10257e0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f49c, 0x1025778, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd4a4, 0x1025710, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4a0, 0x10256a8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4a4, 0x1025640, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4a8, 0x10255d8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f540, 0x1025558, 0, 0x10f5b10, 0x1010960}},
+    {6, {0, 0x7fffffff}},
+    {6, {0x1025540, 0x820}},
+    {12, {0x114f4ac, 0x10254d8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4b0, 0x1025470, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4b4, 0x1025400, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4b8, 0x1025390, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4bc, 0x1025328, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4c0, 0x10252c0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4c4, 0x1025250, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4c8, 0x10251e0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd4a8, 0x1025170, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4cc, 0x1025100, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4d0, 0x1025090, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4d4, 0x1025020, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd4ac, 0x1024fb0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4d8, 0x1024f40, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4dc, 0x1024ed0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4e0, 0x1024e60, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4e4, 0x1024df8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4e8, 0x1024d90, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4ec, 0x1024d28, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4f0, 0x1024cc0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4f4, 0x1024c58, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4f8, 0x1024bf0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f4fc, 0x1024b88, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f500, 0x1024b20, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd4b0, 0x1024ab8, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f504, 0x1024a50, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f508, 0x10249e0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f50c, 0x1024970, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x11cd4b4, 0x1024908, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f510, 0x10248a0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f514, 0x1024830, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f518, 0x10247c0, 0x1026314, 0x1026318, 0x1010960}},
+    {12, {0x114f51c, 0x1024738, 0, 0x10f5b10, 0x1010960}},
+    {6, {0, 0x7fffffff}},
+    {6, {0x102472c, 0x82a}},
+    {12, {0x114f318, 0x10246c8, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f31c, 0x1024660, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f320, 0x10245f8, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f324, 0x1024598, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f328, 0x1024538, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f32c, 0x10244d8, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f33c, 0x1024468, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f340, 0x10243f8, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f344, 0x1024388, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f330, 0x1024318, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f334, 0x10242a8, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f338, 0x1024238, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f348, 0x10241c0, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f34c, 0x1024148, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f350, 0x10240d0, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f354, 0x1024060, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f358, 0x1023ff0, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f35c, 0x1023f80, 0, 0x1026318, 0x1010960}},
+    {12, {0x114f360, 0x1023ef8, 0, 0xf98970, 0x1010960}},
+    {12, {0x114f364, 0x1023e70, 0, 0xf98970, 0x1010960}},
+    {12, {0x114f368, 0x1023de0, 0, 0xf98970, 0x1010960}},
+    {12, {0x114f36c, 0x1023d58, 0, 0xf98970, 0x1010960}},
+    {12, {0x114f370, 0x1023cc8, 0, 0xf98970, 0x1010960}},
+    {12, {0x114f374, 0x1023c40, 0, 0xf98970, 0x1010960}},
+    {6, {0, 0x7fffffff}},
+};
+uint32_t FloatWord(uintptr_t source) {
+    return source == 0 ? 0 : source == 1 ? 0x3f800000u : *reinterpret_cast<const uint32_t*>(source);
+}
+void DebugControls(Locomotion* self) {
+    for (const auto& control : controls) {
+        // The service can appear/disappear during callbacks: do not hoist this lookup.
+        auto service = CallGameFunction<void*, 0x005A00A0>();
+        if (!service) continue;
+        const auto* a = control.args;
+        if (control.slot == 6)
+            CallGameVirtual<void, 6>(service, reinterpret_cast<const void*>(a[0]), uint32_t(a[1]));
+        else if (control.slot == 10)
+            CallGameVirtual<void, 10>(service, &self->flags[a[0] - 0x100], reinterpret_cast<const void*>(a[1]));
+        else
+            CallGameVirtual<void, 12>(service, reinterpret_cast<void*>(a[0]), reinterpret_cast<const void*>(a[1]),
+                                     FloatWord(a[2]), FloatWord(a[3]), FloatWord(a[4]));
+    }
+}
+#endif
+void InitializeMap(Map& map, const char* descriptor, void* sentinel) {
+    map.buckets = sentinel;
+    map.bucketCount = 1;
+    map.count = 0;
+    map.maximumLoad = 1.0f;
+    map.growth = 2.0f;
+    map.policy = 0;
+    map.descriptor = descriptor;
+}
+}
+Locomotion* Construct(Locomotion* self) {
+#if defined(_M_IX86)
+    auto pointer = [](uintptr_t address) { return reinterpret_cast<void*>(address); };
+    auto name = [](uintptr_t address) { return reinterpret_cast<const char*>(address); };
+    void* sentinel = pointer(0x0114C900);
+    InitializeMap(self->paths, name(0x010268C0), sentinel);
+    self->handleDescriptor = pointer(0x00FFE054);
+    for (auto& word : self->handle) word = nullptr;
+    CallGameFunction<void, 0x004AECE0>(self->handle, *reinterpret_cast<void**>(0x011661EC), 0, 0, 0, 0);
+    self->owned.next = self->owned.previous = &self->owned;
+    InitializeMap(self->styles.map, name(0x010268A0), sentinel);
+    InitializeMap(self->effects.map, name(0x01026878), sentinel);
+    InitializeMap(self->builders, name(0x01026850), sentinel);
+    self->progressions.next = self->progressions.previous = &self->progressions;
+    self->progressionDescriptor = name(0x0102682C);
+    InitializeMap(self->weatherEffects, name(0x010267F4), sentinel);
+    // Use the game's import so the bridge and original share the same OS dependency.
+    using InitializeLock = void(__stdcall*)(CRITICAL_SECTION*);
+    (*reinterpret_cast<InitializeLock*>(0x00F95124))(&self->lock);
+    self->flags[0] = self->flags[1] = self->flags[2] = 0;
+    self->state = 0;
+    self->owner = reinterpret_cast<uintptr_t>(&self->owned) == 0 ? nullptr : self;
+    for (auto& line : self->lines) {
+        line = CallGameFunction<void*, 0x004E3F90>(28, name(0x010267E0), 0, 0, 0, 0);
+        if (line) line = CallGameMethod<void*, 0x006C8320>(line);
+    }
+    DebugControls(self);
+    return self;
+#else
+    (void)self;
+    NotRewritten("Locomotion constructor: original renderer, allocator and debug service bridges");
+#endif
+}
+}
